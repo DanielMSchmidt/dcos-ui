@@ -5,7 +5,7 @@ const LocalVolumes = require("../LocalVolumes");
 
 describe("LocalVolumes", function() {
   describe("#FormReducer", function() {
-    it("should return an Array with one item", function() {
+    it("returns an Array with one item", function() {
       const batch = new Batch()
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
         .add(new Transaction(["localVolumes", 0, "type"], "PERSISTENT"));
@@ -14,7 +14,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should contain one full local Volumes item", function() {
+    it("contains one full local Volumes item", function() {
       const batch = new Batch()
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
         .add(new Transaction(["localVolumes", 0, "type"], "PERSISTENT"))
@@ -32,7 +32,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should parse wrong typed values correctly", function() {
+    it("parses wrong typed values correctly", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
       batch = batch.add(new Transaction(["localVolumes", 0, "type"], 123));
@@ -53,7 +53,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should contain two full local Volumes items", function() {
+    it("contains two full local Volumes items", function() {
       const batch = new Batch()
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
@@ -81,7 +81,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should remove the right row.", function() {
+    it("removes the right row.", function() {
       const batch = new Batch()
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
@@ -103,7 +103,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should set the right mode.", function() {
+    it("sets the right mode.", function() {
       const batch = new Batch()
         .add(new Transaction(["localVolumes"], null, ADD_ITEM))
         .add(new Transaction(["localVolumes", 0, "type"], "PERSISTENT"))

@@ -3,11 +3,11 @@ const LocalVolumes = require("../LocalVolumes");
 
 describe("LocalVolumes", function() {
   describe("#JSONParser", function() {
-    it("should return an empty array", function() {
+    it("returns an empty array", function() {
       expect(LocalVolumes.JSONParser({})).toEqual([]);
     });
 
-    it("should return an empty array if only external volumes are present", function() {
+    it("returns an empty array if only external volumes are present", function() {
       const state = {
         container: {
           volumes: [
@@ -28,7 +28,7 @@ describe("LocalVolumes", function() {
       expect(LocalVolumes.JSONParser(state)).toEqual([]);
     });
 
-    it("should contain the transaction for one local volume", function() {
+    it("contains the transaction for one local volume", function() {
       const state = {
         container: {
           volumes: [
@@ -61,7 +61,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should exclude the external volumes", function() {
+    it("excludes the external volumes", function() {
       const state = {
         container: {
           volumes: [
@@ -105,7 +105,7 @@ describe("LocalVolumes", function() {
       ]);
     });
 
-    it("should include a unknown value for modes", function() {
+    it("includes a unknown value for modes", function() {
       const state = {
         container: {
           volumes: [

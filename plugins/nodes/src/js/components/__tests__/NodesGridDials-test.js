@@ -20,6 +20,8 @@ var mockHost = {
   }
 };
 
+// TODO: DCOS_OSS-1892 Align test descriptions
+
 describe("NodesGridDials", function() {
   beforeEach(function() {
     this.hosts = [new Node(Object.assign({}, mockHost))];
@@ -102,12 +104,12 @@ describe("NodesGridDials", function() {
   });
 
   describe("#getInactiveSliceData", function() {
-    it("should use the correct color", function() {
+    it("uses the correct color", function() {
       var inactiveSlice = this.instance.getInactiveSliceData();
       expect(inactiveSlice[0].colorIndex).toEqual(2);
     });
 
-    it("should use 100% of the dial", function() {
+    it("uses 100% of the dial", function() {
       var inactiveSlice = this.instance.getInactiveSliceData();
       expect(inactiveSlice[0].percentage).toEqual(100);
     });

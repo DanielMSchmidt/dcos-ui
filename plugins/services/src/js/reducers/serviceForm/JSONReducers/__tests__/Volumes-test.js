@@ -9,13 +9,13 @@ const Volumes = require("../Volumes");
 
 describe("Volumes", function() {
   describe("#JSONReducer", function() {
-    it("should return an empty array if no volumes are set", function() {
+    it("returns an empty array if no volumes are set", function() {
       const batch = new Batch();
 
       expect(batch.reduce(Volumes.JSONReducer.bind({}), [])).toEqual([]);
     });
 
-    it("should return a local volume", function() {
+    it("returns a local volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
@@ -34,7 +34,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should parse wrong values in local volume", function() {
+    it("parses wrong values in local volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
@@ -60,7 +60,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should parse wrong values in local volume", function() {
+    it("parses wrong values in local volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
@@ -83,7 +83,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should return an external volume", function() {
+    it("returns an external volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -103,7 +103,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should parse wrong values in external volume", function() {
+    it("parses wrong values in external volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -139,7 +139,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should return a local and an external volume", function() {
+    it("returns a local and an external volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -170,7 +170,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should return a fully filled local volume", function() {
+    it("returns a fully filled local volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
@@ -198,7 +198,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should return a fully filled external volume", function() {
+    it("returns a fully filled external volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -242,7 +242,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should remove the right local volume", function() {
+    it("removes the right local volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["localVolumes"], null, ADD_ITEM));
@@ -279,7 +279,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should remove the right external volume", function() {
+    it("removes the right external volume", function() {
       let batch = new Batch();
 
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -331,7 +331,7 @@ describe("Volumes", function() {
       ]);
     });
 
-    it("should contain a mixed combination of volumes", function() {
+    it("contains a mixed combination of volumes", function() {
       let batch = new Batch();
 
       // Add the first external Volume

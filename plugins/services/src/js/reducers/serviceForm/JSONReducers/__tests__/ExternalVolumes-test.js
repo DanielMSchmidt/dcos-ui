@@ -3,11 +3,11 @@ const ExternalVolumes = require("../ExternalVolumes");
 
 describe("External Volumes", function() {
   describe("#JSONParser", function() {
-    it("should return an empty array", function() {
+    it("returns an empty array", function() {
       expect(ExternalVolumes.JSONParser({})).toEqual([]);
     });
 
-    it("should return an empty array if only external volumes are present", function() {
+    it("returns an empty array if only external volumes are present", function() {
       const state = {
         container: {
           volumes: [
@@ -22,7 +22,7 @@ describe("External Volumes", function() {
       expect(ExternalVolumes.JSONParser(state)).toEqual([]);
     });
 
-    it("should contain the transaction for one external volume", function() {
+    it("contains the transaction for one external volume", function() {
       const state = {
         container: {
           volumes: [
@@ -74,7 +74,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should exclude the external volume", function() {
+    it("excludes the external volume", function() {
       const state = {
         container: {
           volumes: [
@@ -131,7 +131,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should include a unknown value for provider", function() {
+    it("includes a unknown value for provider", function() {
       const state = {
         container: {
           volumes: [
@@ -187,7 +187,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should include a unknown value for options", function() {
+    it("includes a unknown value for options", function() {
       const state = {
         container: {
           volumes: [
@@ -243,7 +243,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should include a size value", function() {
+    it("includes a size value", function() {
       const state = {
         container: {
           volumes: [

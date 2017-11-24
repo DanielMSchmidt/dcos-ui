@@ -72,19 +72,19 @@ describe("TaskDetail", function() {
   });
 
   describe("#componentDidMount", function() {
-    it("should call fetchDirectory after onStateStoreSuccess is called", function() {
+    it("calls fetchDirectory after onStateStoreSuccess is called", function() {
       this.instance.onStateStoreSuccess();
       expect(TaskDirectoryStore.fetchDirectory).toHaveBeenCalled();
     });
   });
 
   describe("#onTaskDirectoryStoreError", function() {
-    it("should setState", function() {
+    it("setStates", function() {
       this.instance.onTaskDirectoryStoreError();
       expect(this.instance.setState).toHaveBeenCalled();
     });
 
-    it("should setState increment taskDirectoryErrorCount", function() {
+    it("setStates increment taskDirectoryErrorCount", function() {
       this.instance.state = { taskDirectoryErrorCount: 1 };
       this.instance.onTaskDirectoryStoreError();
       expect(this.instance.setState).toHaveBeenCalledWith({
@@ -94,12 +94,12 @@ describe("TaskDetail", function() {
   });
 
   describe("#onTaskDirectoryStoreSuccess", function() {
-    it("should setState", function() {
+    it("setStates", function() {
       this.instance.onTaskDirectoryStoreSuccess("bar");
       expect(this.instance.setState).toHaveBeenCalled();
     });
 
-    it("should setState increment onTaskDirectoryStoreSuccess", function() {
+    it("setStates increment onTaskDirectoryStoreSuccess", function() {
       const directory = new TaskDirectory({
         items: [{ nlink: 1, path: "/stdout" }]
       });
@@ -117,17 +117,17 @@ describe("TaskDetail", function() {
   });
 
   describe("#handleFetchDirectory", function() {
-    it("should setState", function() {
+    it("setStates", function() {
       this.instance.handleFetchDirectory();
       expect(this.instance.setState).toHaveBeenCalled();
     });
 
-    it("should call TaskDirectoryStore.fetchDirectory", function() {
+    it("calls TaskDirectoryStore.fetchDirectory", function() {
       this.instance.handleFetchDirectory();
       expect(TaskDirectoryStore.fetchDirectory).toHaveBeenCalled();
     });
 
-    it("should not call TaskDirectoryStore.fetchDirectory", function() {
+    it("does not call TaskDirectoryStore.fetchDirectory", function() {
       MesosStateStore.getTaskFromTaskID = function() {
         return null;
       };
@@ -137,12 +137,12 @@ describe("TaskDetail", function() {
   });
 
   describe("#handleBreadcrumbClick", function() {
-    it("should call TaskDirectoryStore.setPath", function() {
+    it("calls TaskDirectoryStore.setPath", function() {
       this.instance.handleBreadcrumbClick();
       expect(TaskDirectoryStore.setPath).toHaveBeenCalled();
     });
 
-    it("should not call TaskDirectoryStore.setPath", function() {
+    it("does not call TaskDirectoryStore.setPath", function() {
       MesosStateStore.getTaskFromTaskID = function() {
         return null;
       };
@@ -166,7 +166,7 @@ describe("TaskDetail", function() {
       ReactDOM.unmountComponentAtNode(this.container);
     });
 
-    it("should call getErrorScreen when error occurred", function() {
+    it("calls getErrorScreen when error occurred", function() {
       this.instance.state = {
         directory: new TaskDirectory({
           items: [{ nlink: 1, path: "/stdout" }]
@@ -191,12 +191,12 @@ describe("TaskDetail", function() {
       expect(this.instance.getErrorScreen).not.toHaveBeenCalled();
     });
 
-    it("should return null if there are no nodes", function() {
+    it("returns null if there are no nodes", function() {
       const node = ReactDOM.findDOMNode(this.instance);
       expect(node).toEqual(null);
     });
 
-    it("should return an element if there is a node", function() {
+    it("returns an element if there is a node", function() {
       MesosStateStore.get = function() {
         return new Task({
           slaves: { fakeProp: "faked" }
@@ -219,7 +219,7 @@ describe("TaskDetail", function() {
   });
 
   describe("#getBasicInfo", function() {
-    it("should return null if task is null", function() {
+    it("returns null if task is null", function() {
       MesosStateStore.getTaskFromTaskID = function() {
         return null;
       };
@@ -227,7 +227,7 @@ describe("TaskDetail", function() {
       expect(result).toEqual(null);
     });
 
-    it("should return an element if task is not null", function() {
+    it("returns an element if task is not null", function() {
       const result = this.instance.getBasicInfo();
 
       expect(TestUtils.isElement(result)).toEqual(true);

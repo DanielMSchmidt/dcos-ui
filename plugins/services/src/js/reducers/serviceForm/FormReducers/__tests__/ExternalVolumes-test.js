@@ -5,7 +5,7 @@ const ExternalVolumes = require("../ExternalVolumes");
 
 describe("External Volumes", function() {
   describe("#FormReducer", function() {
-    it("should return an Array with one item", function() {
+    it("returns an Array with one item", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       expect(batch.reduce(ExternalVolumes.FormReducer, [])).toEqual([
@@ -21,7 +21,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should contain one full external Volumes item", function() {
+    it("contains one full external Volumes item", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(
@@ -45,7 +45,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should parse wrong typed values correctly", function() {
+    it("parses wrong typed values correctly", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(new Transaction(["externalVolumes", 0, "name"], 123));
@@ -73,7 +73,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should contain two full external Volumes items", function() {
+    it("contains two full external Volumes items", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -109,7 +109,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should remove the right row.", function() {
+    it("removes the right row.", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
@@ -138,7 +138,7 @@ describe("External Volumes", function() {
       ]);
     });
 
-    it("should set the right options.", function() {
+    it("sets the right options.", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(
@@ -165,7 +165,7 @@ describe("External Volumes", function() {
         }
       ]);
     });
-    it("should set the right provider.", function() {
+    it("sets the right provider.", function() {
       let batch = new Batch();
       batch = batch.add(new Transaction(["externalVolumes"], null, ADD_ITEM));
       batch = batch.add(
