@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Tooltip } from "reactjs-components";
+import { Tooltip, Select, SelectOption } from "reactjs-components";
 
 import { findNestedPropertyInObject } from "#SRC/js/utils/Util";
 import AddButton from "#SRC/js/components/form/AddButton";
@@ -8,7 +8,6 @@ import FieldError from "#SRC/js/components/form/FieldError";
 import FieldHelp from "#SRC/js/components/form/FieldHelp";
 import FieldInput from "#SRC/js/components/form/FieldInput";
 import FieldLabel from "#SRC/js/components/form/FieldLabel";
-import FieldSelect from "#SRC/js/components/form/FieldSelect";
 import FormGroup from "#SRC/js/components/form/FormGroup";
 import FormGroupHeading from "#SRC/js/components/form/FormGroupHeading";
 import FormGroupHeadingContent
@@ -59,7 +58,16 @@ function placementConstraintLabel(name, tooltipText, options = {}) {
 export default class PlacementSection extends Component {
   getOperatorTypes() {
     return Object.keys(OperatorTypes).map((type, index) => {
-      return <option key={index} value={type}>{type}</option>;
+      return (
+        <SelectOption key={index} value={type} label={OperatorTypes[type].name}>
+          <span className="dropdown-select-item-title">
+            {OperatorTypes[type].name}
+          </span>
+          <span className="dropdown-select-item-description">
+            {OperatorTypes[type].description}
+          </span>
+        </SelectOption>
+      );
     });
   }
 
@@ -130,14 +138,13 @@ export default class PlacementSection extends Component {
             showError={Boolean(operatorError)}
           >
             {operatorLabel}
-            <FieldSelect
+            <Select
               name={`constraints.${index}.operator`}
-              type="text"
               value={String(constraint.operator)}
+              placeholder="Select ..."
             >
-              <option value="">Select</option>
               {this.getOperatorTypes()}
-            </FieldSelect>
+            </Select>
             <FieldError>{operatorError}</FieldError>
           </FormGroup>
           <FormGroup

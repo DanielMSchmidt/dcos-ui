@@ -776,7 +776,7 @@ describe("Service Form Modal", function() {
           // operator
           cy
             .get("@tabView")
-            .find('select[name="constraints.0.operator"]')
+            .find('[name="constraints.0.operator"]')
             .should("exist");
 
           // value
@@ -801,7 +801,7 @@ describe("Service Form Modal", function() {
           // operator
           cy
             .get("@tabView")
-            .find('select[name="constraints.0.operator"]')
+            .find('[name="constraints.0.operator"]')
             .should("not.exist");
 
           // value
@@ -814,13 +814,13 @@ describe("Service Form Modal", function() {
         it('Should hide the "value" when "Unique" is selected in operator dropdown', function() {
           cy
             .get("@tabView")
-            .find('select[name="constraints.0.operator"]')
-            .select("UNIQUE");
+            .find('[name="constraints.0.operator"]')
+            .type("UNIQUE", { force: true });
 
           // value
           cy
             .get("@tabView")
-            .find('select[name="constraints.0.operator"]')
+            .find('[name="constraints.0.operator"]')
             .parents(".form-group")
             .next()
             .next()
